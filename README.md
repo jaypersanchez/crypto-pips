@@ -22,7 +22,7 @@ Returned error: VM Exception while processing transaction: invalid opcode    at 
 | ERC Standard | Description |
 | :----------- | :---------- |
 | `ERC-20`     |  This is the standard API used for fungible tokens, including transfer and balance tracking functionalities. |
-| ERC-223`     | This standard protects users from accidental contract transfers. |
+| `ERC-223`     | This standard protects users from accidental contract transfers. |
 | `ERC-721`    | This is the most popular non-fungible token (NFT) standard. While fungible tokens can be divided, non-fungible tokens can not. NFTs can be owned and transacted by individuals as well as consigned to third-parties. NFTs can represent ownership over digital or physical assets. |
 | `ERC-809`    | This standard is used to rent rival non-fungible tokens. An NFT is described as ‘rival’ if its use/ownership by one individual prevents simultaneous use/ownership by other individuals. ERC-809 allows an owner to rent access to their rival NFTs using a standard set of commands, and users can view all past and current rental agreements from a single wallet interface. |
 | `ERC-1238`   | This standard covers non-transferable tokens (or ‘badges’). |
