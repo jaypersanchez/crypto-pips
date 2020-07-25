@@ -14,5 +14,10 @@
     "smartcontracts"
   ],
   "author": "J. Sanchez",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.0.40",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25"
+  }
 }
