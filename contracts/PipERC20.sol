@@ -2,22 +2,18 @@ pragma solidity ^0.6.0 < 0.6.11;
 
 
 /*
-*	PipERC20 is an ERC20 standard
+* PipERC20 is an ERC20 standard.  Users must handle any false returns by a function call and must not assume that the function will not return a bool
+* This token is fungible or transferable.
 */
 
-/*
-* Token economics
-* Token (stock) price of a company is calculated when a company goes public, an event
-* called and initial public offering (IPO). This is when a company pays an investment
-* bank to use very complex formulas and valuation techniques to derive a company's value * and to determine how many shares will be offered to the public and at what price. 
-* For example,* a company whose value is estimated at $100 million may want to issue 10
-* million shares at $10 per share or they may want to issue 20 million at $5 a share.
-*/
 contract PipERC20 {
 
-	//walletaddress = balance of wallet
+	//ERC20 Required variables
+	string constant token_name = "PIP ERC20";
+	string constant token_symbol = "PIP20";
+	string constant token_decimal = "2";
+	
 	mapping(address => uint256) balances;
-	//wallet address = anotherMapping(walletaddress = approvedwithdrawalsum)
 	mapping(address => mapping (address => uint256)) allowed;
 	uint256 totalSupply_;
 	address private owner;
@@ -39,6 +35,27 @@ contract PipERC20 {
 		totalSupply_ = total;
 		balances[msg.sender] = totalSupply_;
 		owner = msg.sender;
+	}
+
+	/*
+	* ERC20 Standard function but can be optional
+	*/
+	function name() public view returns (string memory) {
+			return(token_name);
+	}
+
+	/*
+	* ERC20 Standard function but optional
+	*/
+	function symbol() public view returns (string memory) {
+		return(token_symbol);
+	}
+
+	/*
+	* ERC 20 Standard but optional
+	*/
+	function decimals() public view returns (uint8 memory) {
+		return(token_decimal);
 	}
 
 	/*
@@ -64,14 +81,23 @@ contract PipERC20 {
 		emit InflateToken(msg.sender, _amount, balances[msg.sender]);
     }
 
+	/*
+	* ERC20 required function declaration
+	*/
 	function balanceOf(address tokenOwner) public view returns (uint) {
 		return balances[tokenOwner]; 
 	}
 
+	/*
+	* ERC20 required function declaration
+	*/
 	function allowance(address _owner, address delegate) public view returns (uint) {
   		return allowed[owner][delegate];
 	}
 
+	/*
+	* ERC20 required function declaration
+	*/
 	function transfer(address receiver, uint numTokens) public returns (bool) {
   		require(numTokens <= balances[msg.sender]);
   		balances[msg.sender] = balances[msg.sender]-numTokens;
@@ -91,6 +117,9 @@ contract PipERC20 {
   		return true;
 	}
 
+	/*
+	* ERC20 required function declaration
+	*/
 	function transferFrom(address _owner, address buyer, uint numTokens) public returns (bool) {
   		require(numTokens <= balances[owner]);
   		require(numTokens <= allowed[owner][msg.sender]);

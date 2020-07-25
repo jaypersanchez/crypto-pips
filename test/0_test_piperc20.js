@@ -24,6 +24,13 @@ contract('PipERC20', function(accounts) {
         assert(pip !== undefined, 'has no instance');
     }).timeout(100000);
 
+    it("PIP ERC20 name should have an identifier of PIP ERC20", async() => {
+        pip = await PipERC20.deployed();
+        let name = await pip.name();
+        console.log("\t\t[ PIP Name :: " + name + " ]");
+        assert.equal(name, "PIP ERC20", 'Token must have name PIP ERC20');
+    });
+
     it("Total Supply Should not be inflated", async() => {
         pip = await PipERC20.deployed();
         totalsupply = await pip.totalSupply();

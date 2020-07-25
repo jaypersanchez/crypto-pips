@@ -1,6 +1,6 @@
 # Overview
 
-This repo contains several smart contract implementation for the Ethereum network.  These smart contracts can be used for stable coin, security token, and utility tokens all for the purpose of showing how a Smart Contract is implemented and show casing knowledge. 
+This repo contains several smart contract implementation for the Ethereum network.  These smart contracts can be used for stable coin, security token, and utility tokens all for the purpose of showing how a Smart Contract is implemented and show casing knowledge. The implementation of each ERC standard are basic implementation and not used for any specific use case.  The idea is to take one of these ERC standard and can be used in a specific smart contract project by way of inheritance.  
 
 ## Development Environment Setup and Technical Notes
 
