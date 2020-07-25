@@ -11,7 +11,7 @@ contract PipERC20 {
 	//ERC20 Required variables
 	string constant token_name = "PIP ERC20";
 	string constant token_symbol = "PIP20";
-	string constant token_decimal = "2";
+	uint8 constant token_decimal = 8;
 	
 	mapping(address => uint256) balances;
 	mapping(address => mapping (address => uint256)) allowed;
@@ -54,7 +54,7 @@ contract PipERC20 {
 	/*
 	* ERC 20 Standard but optional
 	*/
-	function decimals() public view returns (uint8 memory) {
+	function decimals() public view returns (uint8) {
 		return(token_decimal);
 	}
 
