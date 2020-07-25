@@ -13,11 +13,27 @@
     "tokens",
     "smartcontracts"
   ],
-  "author": "J. Sanchez",
+  "author": "jaypersanchez@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.0.40",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.25"
-  }
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.25",
+    "promise": "^8.1.0",
+    "solc": "^0.6.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaypersanchez/crypto-pips.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jaypersanchez/crypto-pips/issues"
+  },
+  "homepage": "https://github.com/jaypersanchez/crypto-pips#readme"
 }

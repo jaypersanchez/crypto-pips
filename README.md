@@ -16,6 +16,11 @@ __NOTE__ Use Ganache-cli.  Attempted to use Ganache V2 but getting error below w
 ```
 Returned error: VM Exception while processing transaction: invalid opcode    at PromiEvent (/usr/local/lib/node_modules/truffle/build/webpack:/packages/contract/lib/promievent.js:9:1)
 ```
+## Generate ABI and Byte
+
+```
+solc -o ./src/abi --bin --abi ./PipERC20.sol  ./contracts/interfaces/
+```
 
 ### Types of ERC Standards
 
