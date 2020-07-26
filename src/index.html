@@ -1,15 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Crypto PiPs</title>
+<title>Cryptp PiP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
 </head>
 <body>
 
-<div class="header">
-<h1>Crypto PiPs</h1>
+<!-- The sidebar -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class="home" href="#home">Home</a>
+  <a class="pip" href="#pip">PiP ERC20</a>
+  <a class="properties" href="#properties">Properties ERC721</a>
+  <a class="about" href="#about">About</a>
 </div>
 
-<div class="content"></div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
+<div class="main">
+
+    
+
+    <div id="content">
+        <div class="header">
+        <h2>Crypto PiP</h2>
+        </div>
+        <p>
+        Crypto PiP is a group of smart contract implementations for the Ethereum network.  Each smart contract is based on the different ERC standard to illustrate how 
+        each one is used in certain use cases.  This user screen is created in order to show how a smart contract based on an ERC framework functions through the use of a user interface.  The goal is to help the user understand how a smart contract would work in a very easy and straight forward example.  The implementation of these smart contracts can also be easily copied and inherited in your own smart contract project.  
+        </p>
+        <p>
+        DISCLAIMER: These smart contracts have not been audited for security vulnerabilities.  If you use this in your own projects, the author of these smart contracts is not in any way responsible for breaches.  Use these smart contracts at your own risk.
+        </p>
+    </div>
+
+    
+    
+    <script>
+        $(document).ready( function() {
+            $(".home").on("click", function() {
+                $("#content").load("./index.html");
+            });
+        });
+
+            $(document).ready( function() {
+            $(".pip").on("click", function() {
+                $("#content").load("./pip.html");
+            });
+        });
+
+        $(document).ready( function() {
+            $(".properties").on("click", function() {
+                $("#content").load("./properties.html");
+            });
+        });
+
+        $(document).ready( function() {
+            $(".about").on("click", function() {
+                $("#content").load("./about.html");
+            });
+        });
+
+    </script>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    
 </body>
 </html>
