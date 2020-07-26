@@ -10,15 +10,9 @@ require('dotenv').config();
 const express_host = process.env.EXPRESS_HOST;
 const express_port = process.env.EXPRESS_PORT;
 
-//smart contract related
-import PIP from "./js/pip";
-
 server.use(express.static('js'));
 server.use(express.static('css'));
 server.use(express.static('src'));
-server.use(express.static('artifacts'));
-server.use(express.static('byte'));
-
 
 /*
 * Process default root index file
