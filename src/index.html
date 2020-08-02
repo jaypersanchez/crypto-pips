@@ -15,6 +15,7 @@
   <a class="home" href="#home">Home</a>
   <a class="pip" href="#pip">PiP ERC20</a>
   <a class="properties" href="#properties">Properties ERC721</a>
+  <a class="smart" href="#smart">Smart Launcher</a> 
   <a class="about" href="#about">About</a>
 </div>
 
@@ -42,7 +43,7 @@
     <script>
         $(document).ready( function() {
             $(".home").on("click", function() {
-                $("#content").load("./index.html");
+                $("#content").load("./home.html");
             });
         });
 
@@ -55,6 +56,12 @@
         $(document).ready( function() {
             $(".properties").on("click", function() {
                 $("#content").load("./properties.html");
+            });
+        });
+
+        $(document).ready( function() {
+            $(".smart").on("click", function() {
+                $("#content").load("./smartlauncher.html");
             });
         });
 

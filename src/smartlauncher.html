@@ -1,0 +1,167 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <!-- This exposes the library as a global variable: ethers -->
+    <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript">
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <div class="header"></div><br>
+    
+    <div><h2>Smart Contract Launcher</h2></div><br><br><br>
+
+    <div>
+        <label for="provider">Choose a provider:</label><br>
+        <select id="provider">
+            <option value="http://127.0.0.1:8545">Ganache 8545</option>
+            <option value="http://127.0.0.1:7545">GanacheV2 7545</option>
+            <option value="https://node2.blockcerts.com:6111">BCBC DEV Node2</option>
+            <option value="rinkeby">Rinkeby</option>
+            <option value="ropsten">Ropsten</option>
+            <option value="homestead">homestead-mainnet</option>
+            <option value="audi">Audi</option>
+        </select>
+    </div><br><br>
+    
+    <div>
+        <label>Select the ABI file for the Smart Contract to be Deployed</label><br>
+        <input type="file" id="file-input"> 
+        <button id="read-button-abi">Get ABI</button>
+        <button id="read-button-byte">Get Byte Code</button>
+    </div><br><br>
+    
+    
+    <div><input  id="privateKey" placeholder="private key" value=""></div><br><br>
+    <div><textarea rows="10" id="abi" placeholder="ABI Interface"></textarea></div><br><br>
+    <div><textarea rows="10" id="byteCode" placeholder="Byte code"></textarea></div><br><br>
+    <div>
+        <button type="button" title="Deploy" id="deployButton">Deploy Contract</button>
+    </div><br><br>
+    <div><textarea rows="4" id="logs" placeholder="Logs Info"></textarea></div>
+</body>
+
+
+<script>
+
+    //Select ABI file
+    document.querySelector("#read-button-abi").addEventListener('click', function() {
+        
+	if(document.querySelector("#file-input").files.length == 0) {
+		alert('Error : No file selected');
+		return;
+	}
+	// first file selected by user
+	var file = document.querySelector("#file-input").files[0];
+	// perform validation on file type & size if required
+	// read the file
+	var reader = new FileReader();
+	// file reading started
+	reader.addEventListener('loadstart', function() {
+	    console.log('File reading started');
+	});
+	// file reading finished successfully
+	reader.addEventListener('load', function(e) {
+	   // contents of file in variable
+	    var text = e.target.result;
+        document.querySelector("#abi").value = text;
+	    console.log(text);
+	});
+	// file reading failed
+	reader.addEventListener('error', function() {
+	    alert('Error : Failed to read file');
+	});
+	// file read progress
+	reader.addEventListener('progress', function(e) {
+	    if(e.lengthComputable == true) {
+	    	var percent_read = Math.floor((e.loaded/e.total)*100);
+	    	console.log(percent_read + '% read');
+	    }
+	});
+	// read as text file
+	reader.readAsText(file);
+});
+    
+    //Select for bytecode file
+    document.querySelector("#read-button-byte").addEventListener('click', function() {
+        
+	if(document.querySelector("#file-input").files.length == 0) {
+		alert('Error : No file selected');
+		return;
+	}
+	// first file selected by user
+	var file = document.querySelector("#file-input").files[0];
+	// perform validation on file type & size if required
+	// read the file
+	var reader = new FileReader();
+	// file reading started
+	reader.addEventListener('loadstart', function() {
+	    console.log('File reading started');
+	});
+	// file reading finished successfully
+	reader.addEventListener('load', function(e) {
+	   // contents of file in variable
+	    var text = e.target.result;
+        document.querySelector("#byteCode").value = text;
+	    console.log(text);
+	});
+	// file reading failed
+	reader.addEventListener('error', function() {
+	    alert('Error : Failed to read file');
+	});
+	// file read progress
+	reader.addEventListener('progress', function(e) {
+	    if(e.lengthComputable == true) {
+	    	var percent_read = Math.floor((e.loaded/e.total)*100);
+	    	console.log(percent_read + '% read');
+	    }
+	});
+	// read as text file
+	reader.readAsText(file);
+});
+
+
+    function deployContract() {
+        
+        var privateKey = document.querySelector(" #privateKey").value;
+        var selectedProvider = document.querySelector("#provider").value;
+        var abi = document.querySelector("#abi").value;
+        var byteCode = document.querySelector("#byteCode").value;
+        var logs = document.querySelector("#logs");
+        
+        //assume to use supported provider
+        let provider = new ethers.getDefaultProvider(selectedProvider);
+        
+        //let provider = new ethers.getDefaultProvider(selectedProvider);
+        window.mywallet = new ethers.Wallet(privateKey, provider);
+
+        let factory = new ethers.ContractFactory(JSON.parse(abi), byteCode, window.mywallet);
+
+        let overrides = {
+            gasPrice: ethers.utils.parseUnits('9.0', 'gwei')
+        };
+
+        factory.deploy().then(contract => {
+            logs.value = "contract address - " + contract.address + " -- hash - " + contract.deployTransaction.hash;
+            console.log(contract.address);
+            console.log(contract.deployTransaction.hash);
+        })
+            .catch(error => {
+                console.log("Error", error);
+                logs.value = error
+            });
+
+    }
+
+
+    var deployButton = document.querySelector("#deployButton");
+    deployButton.addEventListener("click", e => {
+        deployContract();
+    });
+
+</script>
+
+
+</html>
