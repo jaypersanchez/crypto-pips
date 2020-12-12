@@ -16,6 +16,8 @@ contract Properties is IERC721 {
     //uint256 represents the ID of the token for the property.  This can be in a form of property title identification
     mapping(uint256 => address) propertyOwner;
 
+    event propertyOwnerAdded(address propertyOwnerAddress, uint256 propertyId);
+
     constructor ( uint256 total ) public {
 		owner = msg.sender;
 	}
@@ -52,13 +54,19 @@ contract Properties is IERC721 {
     *   @TODO still need to implement
     *  must create a mapping of token ownership per id
     */
+    function addPropertyOwner(address _propertyOwnerAddress, uint256 _propertyId) external {
+        propertyOwner[_propertyId] = _propertyOwnerAddress;
+        emit propertyOwnerAdded(_propertyOwnerAddress, _propertyId);
+    }
+
     function ownerOf(uint256 _propertyId) external override view returns (address) {
         return propertyOwner[_propertyId]; 
     }
 
     //contains the value of all properties owned by a specific address
     function balanceOf(address propertyOwner) public override view returns (uint256) {
-		return propertyValue[propertyOwner]; 
+        uint256 id = propertyValue[propertyOwner];
+		return id; 
 	}
 
 }
