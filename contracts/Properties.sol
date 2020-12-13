@@ -17,6 +17,7 @@ contract Properties is IERC721 {
     mapping(uint256 => address) propertyOwner;
 
     event propertyOwnerAdded(address propertyOwnerAddress, uint256 propertyId);
+    event propertyValueSet(address property_Owner, uint256 value);
 
     constructor ( uint256 total ) public {
 		owner = msg.sender;
@@ -65,9 +66,14 @@ contract Properties is IERC721 {
     }
 
     //contains the value of all properties owned by a specific address
+    function setPropertyValue(address _propertyOwner, uint256 value) external {
+        propertyValue[_propertyOwner] = value;
+        emit propertyValueSet(_propertyOwner, value);
+    }
+
     function balanceOf(address propertyOwner) public override view returns (uint256) {
-        uint256 id = propertyValue[propertyOwner];
-		return id; 
+        uint256 propertyValue = propertyValue[propertyOwner];
+		return propertyValue; 
 	}
 
 }

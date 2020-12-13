@@ -41,7 +41,6 @@ contract('Properties', function(accounts) {
     it("Property should have an Owner", async() => {
         let done = false;
         let propertyId = 34432222
-        
         if(!done) {
             let property = await Properties.deployed();
             let result = await property.ownerOf(propertyId);
@@ -50,6 +49,23 @@ contract('Properties', function(accounts) {
             done = true;
         }
         //assert(before_coinbase_balance > 0, "Coinbase must have a balance of PipERC20 token that is greater than zero");
+    }).timeout(500000);
+
+    it("Set Value of property", async() => {
+        let propertyId = 34432222;
+        let value = 20000000
+        let property = await Properties.deployed();
+        await property.setPropertyValue(AddressA, value,{from:AddressB})
+        property.getPastEvents("propertyValueSet", function(error, result) {
+            if(err) {
+                console.log(err);
+            }
+            else {
+                let stringResult = JSON.stringify(result);
+                //let parsedResult = JSON.parse(result)
+                console.log(`${stringResult}`)
+            }
+        })
     }).timeout(500000);
 
 });
