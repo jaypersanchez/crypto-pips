@@ -23,10 +23,28 @@ contract('Properties', function(accounts) {
         assert(Properties !== undefined, 'has no instance');
     }).timeout(100000);
 
-    /*it("PIP ERC20 name should have an identifier of PIP ERC20", async() => {
-        pip = await PipERC20.deployed();
-        let name = await pip.name();
-        console.log("\t\t[ PIP Name :: " + name + " ]");
-        assert.equal(name, "PIP ERC20", 'Token must have name PIP ERC20');
-    });*/
+    it("Property should have an Owner", async() => {
+        let done = false;
+        let propertyId = 34432222
+        if(!done) {
+            let property = await Properties.deployed();
+            let result = await property.ownerOf(propertyId);
+            console.log(`Property Has Owner ${result.toString()}`);
+            done = true;
+            //add assert condition
+            assert(result.toString != '0x0', 'Properties Contract MUST have an owner');
+        }
+    }).timeout(500000);
+
+    it("Current Value of Property with Owner", async() => {
+        let done = false;
+        if(!done) {
+            let property = await Properties.deployed();
+            let result = await property.balanceOf('0x47e89A0d9165f15cb600A52b1FC2502E1947D236');
+            console.log(`Property Has Valuer ${result.toString()}`);
+            done = true;
+            assert((parseInt(result.toString())) > 0, "Property Value MUST have a value greater than zero")
+        }
+    }).timeout(500000);
+
 });

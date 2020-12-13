@@ -17,27 +17,6 @@ contract('Properties', function(accounts) {
     let AddressE = accounts[5];
     let AddressF = accounts[6];
     
-    it("Assign AddressA as a property owner", async() => {
-        let done = false;
-        let propertyId = 34432222;
-        if(!done) {
-            let property = await Properties.deployed();
-            await property.addPropertyOwner(AddressA, propertyId,{from:contractOwnerAddress})
-            property.getPastEvents("propertyOwnerAdded", function(err, result) {
-                if(err) {
-                    console.log(err);
-                }
-                else {
-                    let stringResult = JSON.stringify(result);
-                    //let parsedResult = JSON.parse(result)
-                    console.log(`${result[0].returnValues.propertyId}`)
-                }
-            })
-            done = true;
-        }
-        
-    }).timeout(500000);
-
     it("Property should have an Owner", async() => {
         let done = false;
         let propertyId = 34432222
@@ -45,13 +24,24 @@ contract('Properties', function(accounts) {
             let property = await Properties.deployed();
             let result = await property.ownerOf(propertyId);
             console.log(`Property Has Owner ${result.toString()}`);
-            
             done = true;
+            //add assert condition
+            assert(result.toString != '0x0', 'Properties Contract MUST have an owner');
         }
-        //assert(before_coinbase_balance > 0, "Coinbase must have a balance of PipERC20 token that is greater than zero");
     }).timeout(500000);
 
-    it("Set Value of property", async() => {
+    it("Current Value of Property with Owner", async() => {
+        let done = false;
+        if(!done) {
+            let property = await Properties.deployed();
+            let result = await property.balanceOf('0x47e89A0d9165f15cb600A52b1FC2502E1947D236');
+            console.log(`Property Has Valuer ${result.toString()}`);
+            done = true;
+            assert((parseInt(result.toString())) > 0, "Property Value MUST have a value greater than zero")
+        }
+    }).timeout(500000);
+
+    /*it("Set Value of property", async() => {
         let propertyId = 34432222;
         let value = 20000000
         let property = await Properties.deployed();
@@ -66,6 +56,6 @@ contract('Properties', function(accounts) {
                 console.log(`${stringResult}`)
             }
         })
-    }).timeout(500000);
+    }).timeout(500000);*/
 
 });

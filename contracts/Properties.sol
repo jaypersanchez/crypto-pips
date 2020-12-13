@@ -9,18 +9,31 @@ import "./interface/IERC721.sol";
 contract Properties is IERC721 {
 
     address owner;
+    address contractMsgSender;
+    //tokenId is considered the propertyId
     uint256 tokenId;
+    uint256 initialPropertyValue;
+
     //represents the value of the property
     mapping(address => uint256) propertyValue;
 	mapping(address => mapping (address => uint256)) allowed;
     //uint256 represents the ID of the token for the property.  This can be in a form of property title identification
     mapping(uint256 => address) propertyOwner;
 
-    event propertyOwnerAdded(address propertyOwnerAddress, uint256 propertyId);
     event propertyValueSet(address property_Owner, uint256 value);
 
-    constructor ( uint256 total ) public {
-		owner = msg.sender;
+    constructor ( address propertyOwnerAddress, uint256 _initialPropertyValue, uint256 _tokenId ) public {
+        /*
+        * anyone can deploy this contract either the property owner itself or
+        * another vendor on behalf the property owner.  So the owner of the property MUST BE identified as
+        * the owner if the msg.sender happens to be a vendor deploying on behalf of the property owner
+        */
+        contractMsgSender = msg.sender;
+		owner = propertyOwnerAddress;
+        initialPropertyValue = _initialPropertyValue;
+        tokenId = _tokenId;
+        propertyOwner[tokenId] = owner;
+        propertyValue[propertyOwnerAddress] = initialPropertyValue;
 	}
 
     function isApprovedForAll(address _owner, address _operator) external override view returns (bool) {
@@ -51,24 +64,9 @@ contract Properties is IERC721 {
 
     }
 
-    /*
-    *   @TODO still need to implement
-    *  must create a mapping of token ownership per id
-    */
-    function addPropertyOwner(address _propertyOwnerAddress, uint256 _propertyId) external {
-        propertyOwner[_propertyId] = _propertyOwnerAddress;
-        emit propertyOwnerAdded(_propertyOwnerAddress, _propertyId);
-    }
-
     function ownerOf(uint256 _propertyId) external override view returns (address) {
         address addy = propertyOwner[_propertyId];
         return  (addy);
-    }
-
-    //contains the value of all properties owned by a specific address
-    function setPropertyValue(address _propertyOwner, uint256 value) external {
-        propertyValue[_propertyOwner] = value;
-        emit propertyValueSet(_propertyOwner, value);
     }
 
     function balanceOf(address propertyOwner) public override view returns (uint256) {
