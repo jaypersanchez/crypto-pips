@@ -60,7 +60,8 @@ contract Properties is IERC721 {
     }
 
     function ownerOf(uint256 _propertyId) external override view returns (address) {
-        return propertyOwner[_propertyId]; 
+        address addy = propertyOwner[_propertyId];
+        return  (addy);
     }
 
     //contains the value of all properties owned by a specific address
