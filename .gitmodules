@@ -1,0 +1,3 @@
+[submodule "crypto-pips"]
+	path = crypto-pips
+	url = https://github.com/jaypersanchez/crypto-pips.git
