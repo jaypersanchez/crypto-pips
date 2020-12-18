@@ -1,0 +1,4243 @@
+{
+  "contractName": "SaleConditionContract",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_value",
+          "type": "bool"
+        }
+      ],
+      "name": "OfferAccepted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "offerAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "OfferCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_WallsPainted",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_CarpetCleaned",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_WindowsWashed",
+          "type": "bool"
+        }
+      ],
+      "name": "isAllSaleConditionsMet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "escrowDataElements",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "escrowDepositorAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "escrowAgentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "escrowBeneficiaryAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "escrowAmount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isConditionMet",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_value",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_dateOfCondition",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_conditionExpiryDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "_conditionMet",
+          "type": "bool"
+        }
+      ],
+      "name": "setConditions",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "_WallsPainted",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "_CarpetCleaned",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "_WindowsWashed",
+          "type": "bool"
+        }
+      ],
+      "name": "setConditionList",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getConditions",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "_WallsPainted",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "_CarpetCleaned",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "_WindowsWashed",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_value\",\"type\":\"bool\"}],\"name\":\"OfferAccepted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_seller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"offerAmount\",\"type\":\"uint256\"}],\"name\":\"OfferCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_WallsPainted\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_CarpetCleaned\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_WindowsWashed\",\"type\":\"bool\"}],\"name\":\"isAllSaleConditionsMet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"escrowDataElements\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"escrowDepositorAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"escrowAgentAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"escrowBeneficiaryAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"escrowAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConditions\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_WallsPainted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"_CarpetCleaned\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"_WindowsWashed\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isConditionMet\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_value\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_WallsPainted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"_CarpetCleaned\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"_WindowsWashed\",\"type\":\"bool\"}],\"name\":\"setConditionList\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_dateOfCondition\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_conditionExpiryDate\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_conditionMet\",\"type\":\"bool\"}],\"name\":\"setConditions\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/jay.sanchez/j4/crypto-pips/contracts/SaleConditionContract.sol\":\"SaleConditionContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/jay.sanchez/j4/crypto-pips/contracts/ComfreePropertyDataModel.sol\":{\"keccak256\":\"0xd29768a394c354fc3ed7296ae43ff7fbd09eaf215e71ddd11835346d423db82d\",\"urls\":[\"bzz-raw://5a5c0d32f8f9937bf9a6c7a4c6f27a41e2abce9f2210af98021b21adac7efc0d\",\"dweb:/ipfs/QmQBT2X7PEiH5uwGSdK32RKXnaL2BW6vT24sdLLdxYP9Lx\"]},\"/C/Users/jay.sanchez/j4/crypto-pips/contracts/OfferContract.sol\":{\"keccak256\":\"0xa2cf97ecbf88145dcb86c73ab4a49155cf385207f56b564d4a9a5dc25450e8eb\",\"urls\":[\"bzz-raw://e6307aa968346c69d098cfeabb9858f17888048bef5413a08f79fcf5c617069d\",\"dweb:/ipfs/QmV6paa6apY5zHjD1u71y5RK96y1zguRmSYxgMH9ZTmiJA\"]},\"/C/Users/jay.sanchez/j4/crypto-pips/contracts/SaleConditionContract.sol\":{\"keccak256\":\"0x3646afb75f5369d28aada64ba544fb0f2134c91473ea4655574371b88b65fdfc\",\"urls\":[\"bzz-raw://744ed7f0c24ea3eb95e4b34f2255ce39b4774430d248ee1fb929d2d2dc01b7e2\",\"dweb:/ipfs/QmSeB4eP6T29MhuRnbwvXHTTSTbPsEH9CAvbvjDFaxwaSJ\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000600b60006101000a81548160ff02191690831515021790555034801561002b57600080fd5b5033600460006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506104a28061007c6000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c80636095204a1461005c5780636b362664146100a45780637c1236271461015b578063d674666a14610193578063f4bd0bcf146101d7575b600080fd5b6100a26004803603606081101561007257600080fd5b810190808035151590602001909291908035151590602001909291908035151590602001909291905050506101f9565b005b6100ac6102f9565b604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390f35b610163610377565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6101d5600480360360608110156101a957600080fd5b8101908080359060200190929190803590602001909291908035151590602001909291905050506103c0565b005b6101df6103f6565b604051808215151515815260200191505060405180910390f35b82600a60000160006101000a81548160ff02191690831515021790555081600a60000160016101000a81548160ff02191690831515021790555080600a60000160026101000a81548160ff021916908315150217905550600a60000160009054906101000a900460ff16801561027e5750600a60000160019054906101000a900460ff165b80156102995750600a60000160029054906101000a900460ff165b156102f4577fd22a61b28df8cc9b1bbcc03da3c66931ea12e5fa1d8be23eaf04b2eb9ffc322a600180600160405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390a15b505050565b60008060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060030154905084565b6000806000600a60000160009054906101000a900460ff16600a60000160019054906101000a900460ff16600a60000160029054906101000a900460ff16925092509250909192565b826007600001819055508160076001018190555080600760020160006101000a81548160ff021916908315150217905550505050565b600060011515600a60000160009054906101000a900460ff161515148015610434575060011515600a60000160019054906101000a900460ff161515145b8015610456575060011515600a60000160029054906101000a900460ff161515145b156104645760019050610469565b600090505b9056fea2646970667358221220a581751cab806deca36d6e43cf47666942de670cdb8c3a3efdb89396cc7e45b364736f6c63430006000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c80636095204a1461005c5780636b362664146100a45780637c1236271461015b578063d674666a14610193578063f4bd0bcf146101d7575b600080fd5b6100a26004803603606081101561007257600080fd5b810190808035151590602001909291908035151590602001909291908035151590602001909291905050506101f9565b005b6100ac6102f9565b604051808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390f35b610163610377565b60405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390f35b6101d5600480360360608110156101a957600080fd5b8101908080359060200190929190803590602001909291908035151590602001909291905050506103c0565b005b6101df6103f6565b604051808215151515815260200191505060405180910390f35b82600a60000160006101000a81548160ff02191690831515021790555081600a60000160016101000a81548160ff02191690831515021790555080600a60000160026101000a81548160ff021916908315150217905550600a60000160009054906101000a900460ff16801561027e5750600a60000160019054906101000a900460ff165b80156102995750600a60000160029054906101000a900460ff165b156102f4577fd22a61b28df8cc9b1bbcc03da3c66931ea12e5fa1d8be23eaf04b2eb9ffc322a600180600160405180841515151581526020018315151515815260200182151515158152602001935050505060405180910390a15b505050565b60008060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060030154905084565b6000806000600a60000160009054906101000a900460ff16600a60000160019054906101000a900460ff16600a60000160029054906101000a900460ff16925092509250909192565b826007600001819055508160076001018190555080600760020160006101000a81548160ff021916908315150217905550505050565b600060011515600a60000160009054906101000a900460ff161515148015610434575060011515600a60000160019054906101000a900460ff161515145b8015610456575060011515600a60000160029054906101000a900460ff161515145b156104645760019050610469565b600090505b9056fea2646970667358221220a581751cab806deca36d6e43cf47666942de670cdb8c3a3efdb89396cc7e45b364736f6c63430006000033",
+  "sourceMap": "316:2698:7:-:0;;;1082:5;1048:39;;;;;;;;;;;;;;;;;;;;1316:59;8:9:-1;5:2;;;30:1;27;20:12;5:2;1316:59:7;1357:10;1349:5;;:18;;;;;;;;;;;;;;;;;;316:2698;;;;;;",
+  "deployedSourceMap": "316:2698:7:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;316:2698:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2256:482;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2256:482:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;335:44:0;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2746:263:7;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1764:305;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1764:305:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1383:292;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2256:482;2390:13;2361;:26;;;:42;;;;;;;;;;;;;;;;;;2444:14;2414:13;:27;;;:44;;;;;;;;;;;;;;;;;;2499:14;2469:13;:27;;;:44;;;;;;;;;;;;;;;;;;2528:13;:26;;;;;;;;;;;;:57;;;;;2558:13;:27;;;;;;;;;;;;2528:57;:88;;;;;2589:13;:27;;;;;;;;;;;;2528:88;2524:207;;;2679:40;2702:4;2708;2714;2679:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2524:207;2256:482;;;:::o;335:44:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;2746:263:7:-;2786:18;2806:19;2826;2916:13;:26;;;;;;;;;;;;2944:13;:27;;;;;;;;;;;;2973:13;:27;;;;;;;;;;;;2908:93;;;;;;2746:263;;;:::o;1764:305::-;1913:16;1875:19;:35;;:54;;;;1982:20;1940:19;:39;;:62;;;;2048:13;2013:19;:32;;;:48;;;;;;;;;;;;;;;;;;1764:305;;;:::o;1383:292::-;1424:11;1481:4;1451:34;;:13;:26;;;;;;;;;;;;:34;;;:73;;;;;1520:4;1489:35;;:13;:27;;;;;;;;;;;;:35;;;1451:73;:112;;;;;1559:4;1528:35;;:13;:27;;;;;;;;;;;;:35;;;1451:112;1448:209;;;1587:4;1580:11;;;;1448:209;1640:5;1633:12;;1383:292;;:::o",
+  "source": "pragma solidity ^0.6.0 < 0.6.11;\r\n\r\nimport \"./OfferContract.sol\";\r\nimport \"./ComfreePropertyDataModel.sol\";\r\n\r\n/*\r\n*   Once the OfferContract is accepted, this contract is next to be set the\r\n* condition before it goes into escrow.  Cannot have a sale condition contract without an\r\n* accepted OfferContract.\r\n*/\r\n\r\ncontract SaleConditionContract is ComfreePropertyDataModel {\r\n    address owner;\r\n\r\n    struct Condition {\r\n        uint dateOfCondition;\r\n        uint conditionExpiryDate;\r\n        bool conditionMet;\r\n    }\r\n\r\n    struct ConditionsList {\r\n        /*\r\n        * For simplicity sake there will only be a few conditions\r\n        * when a condition is set to true, then it is a condition \r\n        * that needs to be met\r\n        */\r\n        bool WallsPainted;\r\n        bool CarpetCleaned;\r\n        bool WindowsWashed;\r\n    }\r\n\r\n    //List of valid OfferContracts\r\n    mapping(address => OfferContract) listOfOfferContracts;\r\n    OfferContract offerContract;\r\n    Condition conditionHeaderData;\r\n    ConditionsList conditionList;\r\n    bool private offerContractValid = false;\r\n\r\n    /* This contract is instantiated and created from OfferContract \r\n    * The modifier is in place to prevent an outside source from creating an instance of this contract\r\n    * without a valid OfferContract.\r\n    */\r\n    constructor () public {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    function isConditionMet() public returns(bool _value) {\r\n        if(conditionList.WallsPainted == true && conditionList.CarpetCleaned == true && conditionList.WindowsWashed == true) {\r\n            return true;\r\n        }\r\n        else {\r\n            return false;\r\n        }           \r\n    }\r\n    \r\n    /*\r\n    * This will set the expiration for conditions to be met\r\n    */\r\n    function setConditions(uint _dateOfCondition, uint _conditionExpiryDate, bool _conditionMet) public {\r\n        conditionHeaderData.dateOfCondition = _dateOfCondition;\r\n        conditionHeaderData.conditionExpiryDate = _conditionExpiryDate;\r\n        conditionHeaderData.conditionMet = _conditionMet;\r\n    }\r\n\r\n    /*\r\n    * This will set which condition in the ConditionsList\r\n    * has been met that must be met before the conditionExpireDate in Condition\r\n    * structs expires\r\n    */\r\n    function setConditionList(bool _WallsPainted, bool _CarpetCleaned,bool _WindowsWashed) public {\r\n        conditionList.WallsPainted = _WallsPainted;\r\n        conditionList.CarpetCleaned = _CarpetCleaned;\r\n        conditionList.WindowsWashed = _WindowsWashed;\r\n        if( conditionList.WallsPainted && conditionList.CarpetCleaned && conditionList.WindowsWashed ) {\r\n            //all sales conditions met\r\n            emit isAllSaleConditionsMet(true, true, true);\r\n        }\r\n    }\r\n\r\n    function getConditions() public returns(bool _WallsPainted, bool _CarpetCleaned,bool _WindowsWashed) {\r\n        //must return the struct as array for UI\r\n        return (conditionList.WallsPainted, conditionList.CarpetCleaned, conditionList.WindowsWashed);\r\n    }\r\n\r\n}",
+  "sourcePath": "C:\\Users\\jay.sanchez\\j4\\crypto-pips\\contracts\\SaleConditionContract.sol",
+  "ast": {
+    "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/SaleConditionContract.sol",
+    "exportedSymbols": {
+      "SaleConditionContract": [
+        1478
+      ]
+    },
+    "id": 1479,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1318,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0",
+          "<",
+          "0.6",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:7"
+      },
+      {
+        "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/OfferContract.sol",
+        "file": "./OfferContract.sol",
+        "id": 1319,
+        "nodeType": "ImportDirective",
+        "scope": 1479,
+        "sourceUnit": 804,
+        "src": "36:29:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/ComfreePropertyDataModel.sol",
+        "file": "./ComfreePropertyDataModel.sol",
+        "id": 1320,
+        "nodeType": "ImportDirective",
+        "scope": 1479,
+        "sourceUnit": 36,
+        "src": "67:40:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1321,
+              "name": "ComfreePropertyDataModel",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 35,
+              "src": "350:24:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ComfreePropertyDataModel_$35",
+                "typeString": "contract ComfreePropertyDataModel"
+              }
+            },
+            "id": 1322,
+            "nodeType": "InheritanceSpecifier",
+            "src": "350:24:7"
+          }
+        ],
+        "contractDependencies": [
+          35
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1478,
+        "linearizedBaseContracts": [
+          1478,
+          35
+        ],
+        "name": "SaleConditionContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1324,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "382:13:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 1323,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "382:7:7",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "SaleConditionContract.Condition",
+            "id": 1331,
+            "members": [
+              {
+                "constant": false,
+                "id": 1326,
+                "name": "dateOfCondition",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "432:20:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1325,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "432:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1328,
+                "name": "conditionExpiryDate",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "463:24:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1327,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "463:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1330,
+                "name": "conditionMet",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "498:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1329,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "498:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Condition",
+            "nodeType": "StructDefinition",
+            "scope": 1478,
+            "src": "404:119:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "SaleConditionContract.ConditionsList",
+            "id": 1338,
+            "members": [
+              {
+                "constant": false,
+                "id": 1333,
+                "name": "WallsPainted",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "755:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1332,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "755:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1335,
+                "name": "CarpetCleaned",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "783:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1334,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "783:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1337,
+                "name": "WindowsWashed",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "812:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1336,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "812:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ConditionsList",
+            "nodeType": "StructDefinition",
+            "scope": 1478,
+            "src": "531:307:7",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1342,
+            "name": "listOfOfferContracts",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "882:54:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_contract$_OfferContract_$803_$",
+              "typeString": "mapping(address => contract OfferContract)"
+            },
+            "typeName": {
+              "id": 1341,
+              "keyType": {
+                "id": 1339,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "890:7:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "882:33:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_contract$_OfferContract_$803_$",
+                "typeString": "mapping(address => contract OfferContract)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1340,
+                "name": "OfferContract",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 803,
+                "src": "901:13:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_OfferContract_$803",
+                  "typeString": "contract OfferContract"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1344,
+            "name": "offerContract",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "943:27:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OfferContract_$803",
+              "typeString": "contract OfferContract"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1343,
+              "name": "OfferContract",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 803,
+              "src": "943:13:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OfferContract_$803",
+                "typeString": "contract OfferContract"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1346,
+            "name": "conditionHeaderData",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "977:29:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Condition_$1331_storage",
+              "typeString": "struct SaleConditionContract.Condition"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1345,
+              "name": "Condition",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1331,
+              "src": "977:9:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Condition_$1331_storage_ptr",
+                "typeString": "struct SaleConditionContract.Condition"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1348,
+            "name": "conditionList",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "1013:28:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+              "typeString": "struct SaleConditionContract.ConditionsList"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1347,
+              "name": "ConditionsList",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1338,
+              "src": "1013:14:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ConditionsList_$1338_storage_ptr",
+                "typeString": "struct SaleConditionContract.ConditionsList"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1351,
+            "name": "offerContractValid",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "1048:39:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1349,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "1048:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "66616c7365",
+              "id": 1350,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "bool",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1082:5:7",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "value": "false"
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1359,
+              "nodeType": "Block",
+              "src": "1338:37:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1357,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1354,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1324,
+                      "src": "1349:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1355,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1723,
+                        "src": "1357:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 1356,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1357:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1349:18:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1358,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1349:18:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1360,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1352,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1328:2:7"
+            },
+            "returnParameters": {
+              "id": 1353,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1338:0:7"
+            },
+            "scope": 1478,
+            "src": "1316:59:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1386,
+              "nodeType": "Block",
+              "src": "1437:238:7",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 1378,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1373,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 1368,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1365,
+                            "name": "conditionList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1348,
+                            "src": "1451:13:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                              "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                            }
+                          },
+                          "id": 1366,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "WallsPainted",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1333,
+                          "src": "1451:26:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1367,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1481:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "src": "1451:34:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 1372,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1369,
+                            "name": "conditionList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1348,
+                            "src": "1489:13:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                              "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                            }
+                          },
+                          "id": 1370,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "CarpetCleaned",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1335,
+                          "src": "1489:27:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1371,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1520:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "src": "1489:35:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "1451:73:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1377,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1374,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "1528:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1375,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WindowsWashed",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1337,
+                        "src": "1528:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 1376,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1559:4:7",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      },
+                      "src": "1528:35:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1451:112:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 1384,
+                    "nodeType": "Block",
+                    "src": "1618:39:7",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "66616c7365",
+                          "id": 1382,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1640:5:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        },
+                        "functionReturnParameters": 1364,
+                        "id": 1383,
+                        "nodeType": "Return",
+                        "src": "1633:12:7"
+                      }
+                    ]
+                  },
+                  "id": 1385,
+                  "nodeType": "IfStatement",
+                  "src": "1448:209:7",
+                  "trueBody": {
+                    "id": 1381,
+                    "nodeType": "Block",
+                    "src": "1565:38:7",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1379,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1587:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "functionReturnParameters": 1364,
+                        "id": 1380,
+                        "nodeType": "Return",
+                        "src": "1580:11:7"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "f4bd0bcf",
+            "id": 1387,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isConditionMet",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1361,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1406:2:7"
+            },
+            "returnParameters": {
+              "id": 1364,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1363,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1387,
+                  "src": "1424:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1362,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1424:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1423:13:7"
+            },
+            "scope": 1478,
+            "src": "1383:292:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1414,
+              "nodeType": "Block",
+              "src": "1864:205:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1400,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1396,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "1875:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1398,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "dateOfCondition",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1326,
+                      "src": "1875:35:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1399,
+                      "name": "_dateOfCondition",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1389,
+                      "src": "1913:16:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1875:54:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1401,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1875:54:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1406,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1402,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "1940:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1404,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "conditionExpiryDate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1328,
+                      "src": "1940:39:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1405,
+                      "name": "_conditionExpiryDate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1391,
+                      "src": "1982:20:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1940:62:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1407,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1940:62:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1412,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1408,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "2013:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1410,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "conditionMet",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1330,
+                      "src": "2013:32:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1411,
+                      "name": "_conditionMet",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1393,
+                      "src": "2048:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2013:48:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1413,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2013:48:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "d674666a",
+            "id": 1415,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setConditions",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1394,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1389,
+                  "name": "_dateOfCondition",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1787:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1388,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1787:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1391,
+                  "name": "_conditionExpiryDate",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1810:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1390,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1810:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1393,
+                  "name": "_conditionMet",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1837:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1392,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1837:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1786:70:7"
+            },
+            "returnParameters": {
+              "id": 1395,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1864:0:7"
+            },
+            "scope": 1478,
+            "src": "1764:305:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1458,
+              "nodeType": "Block",
+              "src": "2350:388:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1428,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1424,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2361:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1426,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "WallsPainted",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1333,
+                      "src": "2361:26:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1427,
+                      "name": "_WallsPainted",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1417,
+                      "src": "2390:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2361:42:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1429,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2361:42:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1434,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1430,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2414:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1432,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "CarpetCleaned",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1335,
+                      "src": "2414:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1433,
+                      "name": "_CarpetCleaned",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1419,
+                      "src": "2444:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2414:44:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1435,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2414:44:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1440,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1436,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2469:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1438,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "WindowsWashed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1337,
+                      "src": "2469:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1439,
+                      "name": "_WindowsWashed",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1421,
+                      "src": "2499:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2469:44:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1441,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2469:44:7"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 1449,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1446,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1442,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2528:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1443,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WallsPainted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1333,
+                        "src": "2528:26:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1444,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2558:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1445,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CarpetCleaned",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1335,
+                        "src": "2558:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "2528:57:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1447,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2589:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1448,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "WindowsWashed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1337,
+                      "src": "2589:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2528:88:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1457,
+                  "nodeType": "IfStatement",
+                  "src": "2524:207:7",
+                  "trueBody": {
+                    "id": 1456,
+                    "nodeType": "Block",
+                    "src": "2619:112:7",
+                    "statements": [
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1451,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2702:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1452,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2708:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1453,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2714:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            ],
+                            "id": 1450,
+                            "name": "isAllSaleConditionsMet",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 34,
+                            "src": "2679:22:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_bool_$_t_bool_$_t_bool_$returns$__$",
+                              "typeString": "function (bool,bool,bool)"
+                            }
+                          },
+                          "id": 1454,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2679:40:7",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1455,
+                        "nodeType": "EmitStatement",
+                        "src": "2674:45:7"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "6095204a",
+            "id": 1459,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setConditionList",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1422,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1417,
+                  "name": "_WallsPainted",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2282:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1416,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2282:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1419,
+                  "name": "_CarpetCleaned",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2302:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1418,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2302:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1421,
+                  "name": "_WindowsWashed",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2322:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1420,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2322:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2281:61:7"
+            },
+            "returnParameters": {
+              "id": 1423,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2350:0:7"
+            },
+            "scope": 1478,
+            "src": "2256:482:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1476,
+              "nodeType": "Block",
+              "src": "2847:162:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1468,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2916:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1469,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WallsPainted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1333,
+                        "src": "2916:26:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1470,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2944:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1471,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CarpetCleaned",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1335,
+                        "src": "2944:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1472,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2973:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1473,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WindowsWashed",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1337,
+                        "src": "2973:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 1474,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "2915:86:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_bool_$_t_bool_$",
+                      "typeString": "tuple(bool,bool,bool)"
+                    }
+                  },
+                  "functionReturnParameters": 1467,
+                  "id": 1475,
+                  "nodeType": "Return",
+                  "src": "2908:93:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "7c123627",
+            "id": 1477,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getConditions",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1460,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2768:2:7"
+            },
+            "returnParameters": {
+              "id": 1467,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1462,
+                  "name": "_WallsPainted",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2786:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1461,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2786:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1464,
+                  "name": "_CarpetCleaned",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2806:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1463,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2806:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1466,
+                  "name": "_WindowsWashed",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2826:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1465,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2826:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2785:61:7"
+            },
+            "scope": 1478,
+            "src": "2746:263:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1479,
+        "src": "316:2698:7"
+      }
+    ],
+    "src": "0:3014:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/SaleConditionContract.sol",
+    "exportedSymbols": {
+      "SaleConditionContract": [
+        1478
+      ]
+    },
+    "id": 1479,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1318,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0",
+          "<",
+          "0.6",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:7"
+      },
+      {
+        "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/OfferContract.sol",
+        "file": "./OfferContract.sol",
+        "id": 1319,
+        "nodeType": "ImportDirective",
+        "scope": 1479,
+        "sourceUnit": 804,
+        "src": "36:29:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Users/jay.sanchez/j4/crypto-pips/contracts/ComfreePropertyDataModel.sol",
+        "file": "./ComfreePropertyDataModel.sol",
+        "id": 1320,
+        "nodeType": "ImportDirective",
+        "scope": 1479,
+        "sourceUnit": 36,
+        "src": "67:40:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1321,
+              "name": "ComfreePropertyDataModel",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 35,
+              "src": "350:24:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ComfreePropertyDataModel_$35",
+                "typeString": "contract ComfreePropertyDataModel"
+              }
+            },
+            "id": 1322,
+            "nodeType": "InheritanceSpecifier",
+            "src": "350:24:7"
+          }
+        ],
+        "contractDependencies": [
+          35
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1478,
+        "linearizedBaseContracts": [
+          1478,
+          35
+        ],
+        "name": "SaleConditionContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1324,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "382:13:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 1323,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "382:7:7",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "SaleConditionContract.Condition",
+            "id": 1331,
+            "members": [
+              {
+                "constant": false,
+                "id": 1326,
+                "name": "dateOfCondition",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "432:20:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1325,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "432:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1328,
+                "name": "conditionExpiryDate",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "463:24:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1327,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "463:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1330,
+                "name": "conditionMet",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1331,
+                "src": "498:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1329,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "498:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Condition",
+            "nodeType": "StructDefinition",
+            "scope": 1478,
+            "src": "404:119:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "SaleConditionContract.ConditionsList",
+            "id": 1338,
+            "members": [
+              {
+                "constant": false,
+                "id": 1333,
+                "name": "WallsPainted",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "755:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1332,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "755:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1335,
+                "name": "CarpetCleaned",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "783:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1334,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "783:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1337,
+                "name": "WindowsWashed",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 1338,
+                "src": "812:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1336,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "812:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ConditionsList",
+            "nodeType": "StructDefinition",
+            "scope": 1478,
+            "src": "531:307:7",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1342,
+            "name": "listOfOfferContracts",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "882:54:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_contract$_OfferContract_$803_$",
+              "typeString": "mapping(address => contract OfferContract)"
+            },
+            "typeName": {
+              "id": 1341,
+              "keyType": {
+                "id": 1339,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "890:7:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "882:33:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_contract$_OfferContract_$803_$",
+                "typeString": "mapping(address => contract OfferContract)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1340,
+                "name": "OfferContract",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 803,
+                "src": "901:13:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_OfferContract_$803",
+                  "typeString": "contract OfferContract"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1344,
+            "name": "offerContract",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "943:27:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OfferContract_$803",
+              "typeString": "contract OfferContract"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1343,
+              "name": "OfferContract",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 803,
+              "src": "943:13:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OfferContract_$803",
+                "typeString": "contract OfferContract"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1346,
+            "name": "conditionHeaderData",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "977:29:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Condition_$1331_storage",
+              "typeString": "struct SaleConditionContract.Condition"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1345,
+              "name": "Condition",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1331,
+              "src": "977:9:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Condition_$1331_storage_ptr",
+                "typeString": "struct SaleConditionContract.Condition"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1348,
+            "name": "conditionList",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "1013:28:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+              "typeString": "struct SaleConditionContract.ConditionsList"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1347,
+              "name": "ConditionsList",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1338,
+              "src": "1013:14:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ConditionsList_$1338_storage_ptr",
+                "typeString": "struct SaleConditionContract.ConditionsList"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 1351,
+            "name": "offerContractValid",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1478,
+            "src": "1048:39:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1349,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "1048:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "66616c7365",
+              "id": 1350,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "bool",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1082:5:7",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "value": "false"
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1359,
+              "nodeType": "Block",
+              "src": "1338:37:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1357,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1354,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1324,
+                      "src": "1349:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1355,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1723,
+                        "src": "1357:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 1356,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1357:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1349:18:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1358,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1349:18:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1360,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1352,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1328:2:7"
+            },
+            "returnParameters": {
+              "id": 1353,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1338:0:7"
+            },
+            "scope": 1478,
+            "src": "1316:59:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1386,
+              "nodeType": "Block",
+              "src": "1437:238:7",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 1378,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1373,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 1368,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1365,
+                            "name": "conditionList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1348,
+                            "src": "1451:13:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                              "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                            }
+                          },
+                          "id": 1366,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "WallsPainted",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1333,
+                          "src": "1451:26:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1367,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1481:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "src": "1451:34:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 1372,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1369,
+                            "name": "conditionList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1348,
+                            "src": "1489:13:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                              "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                            }
+                          },
+                          "id": 1370,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "CarpetCleaned",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1335,
+                          "src": "1489:27:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1371,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1520:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "src": "1489:35:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "1451:73:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1377,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1374,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "1528:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1375,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WindowsWashed",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1337,
+                        "src": "1528:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 1376,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1559:4:7",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      },
+                      "src": "1528:35:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1451:112:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 1384,
+                    "nodeType": "Block",
+                    "src": "1618:39:7",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "66616c7365",
+                          "id": 1382,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1640:5:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        },
+                        "functionReturnParameters": 1364,
+                        "id": 1383,
+                        "nodeType": "Return",
+                        "src": "1633:12:7"
+                      }
+                    ]
+                  },
+                  "id": 1385,
+                  "nodeType": "IfStatement",
+                  "src": "1448:209:7",
+                  "trueBody": {
+                    "id": 1381,
+                    "nodeType": "Block",
+                    "src": "1565:38:7",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 1379,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1587:4:7",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        },
+                        "functionReturnParameters": 1364,
+                        "id": 1380,
+                        "nodeType": "Return",
+                        "src": "1580:11:7"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "f4bd0bcf",
+            "id": 1387,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isConditionMet",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1361,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1406:2:7"
+            },
+            "returnParameters": {
+              "id": 1364,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1363,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1387,
+                  "src": "1424:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1362,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1424:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1423:13:7"
+            },
+            "scope": 1478,
+            "src": "1383:292:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1414,
+              "nodeType": "Block",
+              "src": "1864:205:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1400,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1396,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "1875:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1398,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "dateOfCondition",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1326,
+                      "src": "1875:35:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1399,
+                      "name": "_dateOfCondition",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1389,
+                      "src": "1913:16:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1875:54:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1401,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1875:54:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1406,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1402,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "1940:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1404,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "conditionExpiryDate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1328,
+                      "src": "1940:39:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1405,
+                      "name": "_conditionExpiryDate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1391,
+                      "src": "1982:20:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1940:62:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1407,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1940:62:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1412,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1408,
+                        "name": "conditionHeaderData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1346,
+                        "src": "2013:19:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Condition_$1331_storage",
+                          "typeString": "struct SaleConditionContract.Condition storage ref"
+                        }
+                      },
+                      "id": 1410,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "conditionMet",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1330,
+                      "src": "2013:32:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1411,
+                      "name": "_conditionMet",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1393,
+                      "src": "2048:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2013:48:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1413,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2013:48:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "d674666a",
+            "id": 1415,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setConditions",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1394,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1389,
+                  "name": "_dateOfCondition",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1787:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1388,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1787:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1391,
+                  "name": "_conditionExpiryDate",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1810:25:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1390,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1810:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1393,
+                  "name": "_conditionMet",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1415,
+                  "src": "1837:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1392,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1837:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1786:70:7"
+            },
+            "returnParameters": {
+              "id": 1395,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1864:0:7"
+            },
+            "scope": 1478,
+            "src": "1764:305:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1458,
+              "nodeType": "Block",
+              "src": "2350:388:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1428,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1424,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2361:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1426,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "WallsPainted",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1333,
+                      "src": "2361:26:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1427,
+                      "name": "_WallsPainted",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1417,
+                      "src": "2390:13:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2361:42:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1429,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2361:42:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1434,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1430,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2414:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1432,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "CarpetCleaned",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1335,
+                      "src": "2414:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1433,
+                      "name": "_CarpetCleaned",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1419,
+                      "src": "2444:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2414:44:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1435,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2414:44:7"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1440,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1436,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2469:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1438,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "WindowsWashed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1337,
+                      "src": "2469:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1439,
+                      "name": "_WindowsWashed",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1421,
+                      "src": "2499:14:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2469:44:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1441,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2469:44:7"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 1449,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1446,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1442,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2528:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1443,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WallsPainted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1333,
+                        "src": "2528:26:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1444,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2558:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1445,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CarpetCleaned",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1335,
+                        "src": "2558:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "2528:57:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1447,
+                        "name": "conditionList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1348,
+                        "src": "2589:13:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                          "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                        }
+                      },
+                      "id": 1448,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "WindowsWashed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1337,
+                      "src": "2589:27:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2528:88:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1457,
+                  "nodeType": "IfStatement",
+                  "src": "2524:207:7",
+                  "trueBody": {
+                    "id": 1456,
+                    "nodeType": "Block",
+                    "src": "2619:112:7",
+                    "statements": [
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1451,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2702:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1452,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2708:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            },
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "74727565",
+                              "id": 1453,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2714:4:7",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "true"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            ],
+                            "id": 1450,
+                            "name": "isAllSaleConditionsMet",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 34,
+                            "src": "2679:22:7",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_bool_$_t_bool_$_t_bool_$returns$__$",
+                              "typeString": "function (bool,bool,bool)"
+                            }
+                          },
+                          "id": 1454,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2679:40:7",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1455,
+                        "nodeType": "EmitStatement",
+                        "src": "2674:45:7"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "6095204a",
+            "id": 1459,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setConditionList",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1422,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1417,
+                  "name": "_WallsPainted",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2282:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1416,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2282:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1419,
+                  "name": "_CarpetCleaned",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2302:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1418,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2302:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1421,
+                  "name": "_WindowsWashed",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1459,
+                  "src": "2322:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1420,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2322:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2281:61:7"
+            },
+            "returnParameters": {
+              "id": 1423,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2350:0:7"
+            },
+            "scope": 1478,
+            "src": "2256:482:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1476,
+              "nodeType": "Block",
+              "src": "2847:162:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1468,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2916:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1469,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WallsPainted",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1333,
+                        "src": "2916:26:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1470,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2944:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1471,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "CarpetCleaned",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1335,
+                        "src": "2944:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1472,
+                          "name": "conditionList",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1348,
+                          "src": "2973:13:7",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ConditionsList_$1338_storage",
+                            "typeString": "struct SaleConditionContract.ConditionsList storage ref"
+                          }
+                        },
+                        "id": 1473,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "WindowsWashed",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1337,
+                        "src": "2973:27:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 1474,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "2915:86:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_bool_$_t_bool_$",
+                      "typeString": "tuple(bool,bool,bool)"
+                    }
+                  },
+                  "functionReturnParameters": 1467,
+                  "id": 1475,
+                  "nodeType": "Return",
+                  "src": "2908:93:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "7c123627",
+            "id": 1477,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getConditions",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1460,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2768:2:7"
+            },
+            "returnParameters": {
+              "id": 1467,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1462,
+                  "name": "_WallsPainted",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2786:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1461,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2786:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1464,
+                  "name": "_CarpetCleaned",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2806:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1463,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2806:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1466,
+                  "name": "_WindowsWashed",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1477,
+                  "src": "2826:19:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1465,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2826:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2785:61:7"
+            },
+            "scope": 1478,
+            "src": "2746:263:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1479,
+        "src": "316:2698:7"
+      }
+    ],
+    "src": "0:3014:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.0+commit.26b70077.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2020-12-17T01:14:10.575Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
